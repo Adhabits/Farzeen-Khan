@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Farzeen Khan — Empowering Females</title>
 
-  <!-- Meta Pixel -->
+  <!-- Meta Pixel (kept) -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,7 +15,7 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window,document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1294526649348599'); // Pixel ID (kept)
+  fbq('init', '1294526649348599'); // Pixel ID
   fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
@@ -25,17 +25,18 @@
   <style>
     :root{
       --accent:#ffb642;
-      --card:#1a1a1a;
+      --card:#0f0f0f;
       --muted:#d8b678;
       --whatsapp:#25D366;
       --bg:#000;
+      --glass: rgba(255,255,255,0.02);
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--accent);-webkit-font-smoothing:antialiased}
     a{color:inherit}
     .container{max-width:1000px;margin:0 auto;padding:18px}
 
-    /* Buttons & animation */
+    /* ===== Buttons & animation ===== */
     .watch-wrap{text-align:center;margin-top:12px}
     .watch-btn{
       display:inline-block;padding:10px 22px;background:var(--accent);color:#000;font-weight:800;border-radius:30px;
@@ -46,57 +47,133 @@
     .pulse-shake{ animation:shakeX 1.6s infinite; }
     @keyframes shakeX {0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
 
-    /* Coach */
+    /* ===== Coach ===== */
     .coach{padding:26px 12px;text-align:center}
     .badge{background:var(--accent);color:#000;padding:8px 14px;border-radius:25px;display:inline-block;margin-bottom:10px;animation:popIn .6s}
     @keyframes popIn{0{transform:scale(.9);opacity:0}100{transform:scale(1);opacity:1}}
     h1{font-size:26px;margin:10px 0 8px;filter:drop-shadow(0 6px 18px rgba(255,182,66,0.12))}
-    .vision{background:linear-gradient(180deg,var(--card),#0b0b0b);padding:12px;border-radius:10px;margin:12px auto;max-width:900px;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+    .vision{background:linear-gradient(180deg,var(--card),#070707);padding:12px;border-radius:10px;margin:12px auto;max-width:900px;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
 
-    /* Responsive video */
+    /* ===== Video ===== */
     .video-wrap{width:100%;max-width:880px;margin:14px auto;border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,0.6)}
     .video-wrap iframe{width:100%;height:100%;border:0;display:block}
     .video-aspect { aspect-ratio: 16/9; max-height:55vh; }
 
-    /* Counters */
+    /* ===== Counters ===== */
     .counters{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0}
     .counter-card{background:linear-gradient(145deg,#151515,#0e0e0e);border-radius:10px;padding:14px 16px;min-width:110px;box-shadow:0 10px 30px rgba(0,0,0,0.6);transition:transform .28s}
     .counter-card:hover{transform:translateY(-6px)}
     .counter-card .value{font-size:20px;font-weight:800;color:var(--accent)}
     .counter-card .label{font-size:12px;color:var(--muted)}
 
-    /* Features */
-    .feature-section{background:linear-gradient(145deg,#0e0e0e,#000);padding:16px;border-radius:12px;margin:12px 0}
-    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
-    .feature-box{background:linear-gradient(145deg,var(--card),#0f0f0f);padding:12px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.6);transition:transform .28s;cursor:pointer;text-align:center}
-    .feature-box:hover{transform:translateY(-8px) scale(1.02)}
-    .feature-icon{font-size:20px;background:radial-gradient(circle,var(--accent),#c27803);color:#000;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px;transition:transform .4s}
-    .feature-box:hover .feature-icon{transform:rotate(16deg) scale(1.08)}
+    /* ================= NEW FEATURES SECTION (as requested, like the image) ================= */
+    .feature-wrapper{
+      background: linear-gradient(180deg,#0b0b0b,#040404);
+      border-radius:20px;
+      padding:26px;
+      margin:14px 0 18px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,182,66,0.04);
+    }
+    .feature-header{
+      text-align:center;
+      margin-bottom:18px;
+    }
+    .feature-header h2{
+      font-size:30px;
+      margin:0 0 6px;
+      color:var(--accent);
+    }
+    .feature-header p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+    .feature-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:16px;
+      margin-top:18px;
+    }
 
-    /* Steps — default single column on desktop, mobile will be 2 columns */
-    .steps{max-width:760px;margin:12px auto;display:grid;gap:12px;grid-template-columns:1fr}
+    /* each feature card */
+    .feature-card{
+      background: linear-gradient(145deg,#0f0f0f,#080808);
+      border-radius:18px;
+      padding:18px;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      min-height:110px;
+      transition:transform .28s, box-shadow .28s;
+    }
+    .feature-card:hover{ transform:translateY(-8px); box-shadow:0 20px 50px rgba(0,0,0,0.65); }
+
+    /* icon area large & left */
+    .feature-media{
+      width:78px;
+      height:78px;
+      min-width:78px;
+      border-radius:14px;
+      background: linear-gradient(180deg,var(--accent), #c68613);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 8px 20px rgba(255,182,66,0.12);
+      font-size:30px;
+      color:#000;
+      flex-shrink:0;
+    }
+
+    /* text area left-aligned */
+    .feature-content{
+      text-align:left;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .feature-title{
+      font-weight:800;
+      font-size:18px;
+      color:var(--accent);
+    }
+    .feature-desc{
+      color:#d3d3d3;
+      font-size:13px;
+      line-height:1.25;
+    }
+
+    /* responsive tweaks */
+    @media (max-width:860px){
+      .feature-header h2{font-size:26px}
+      .feature-grid{gap:12px}
+    }
+    @media (max-width:520px){
+      .feature-wrapper{padding:18px;border-radius:14px}
+      .feature-header h2{font-size:22px}
+      .feature-grid{grid-template-columns:repeat(2,1fr); gap:10px}
+      .feature-card{min-height:100px;padding:12px;gap:12px}
+      .feature-media{width:62px;height:62px;min-width:62px;font-size:26px;border-radius:12px}
+      .feature-title{font-size:16px}
+      .feature-desc{font-size:13px}
+    }
+    /* ================ END FEATURES SECTION ================ */
+
+    /* ===== Steps / numbered circles responsive ===== */
+    .steps{max-width:760px;margin:12px auto;display:grid;gap:12px}
     .card{background:linear-gradient(145deg,#121212,#0b0b0b);padding:14px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,0.6);display:flex;gap:12px;align-items:flex-start;opacity:0;transform:translateX(16px);transition:all .5s}
     .card.visible{opacity:1;transform:none}
-    .step-circle{
-      background:var(--accent);color:#000;border-radius:50%;
-      width:clamp(36px, 9vw, 48px);height:clamp(36px,9vw,48px);
-      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:clamp(14px,3.6vw,18px)
-    }
+    .step-circle{ background:var(--accent);color:#000;border-radius:50%; width:clamp(36px,9vw,48px);height:clamp(36px,9vw,48px); display:flex;align-items:center;justify-content:center;font-weight:800;font-size:clamp(14px,3.6vw,18px) }
     .card h3{margin:0;font-size:clamp(15px,3.6vw,18px)}
     .card p{margin:6px 0 0;color:#cfcfcf;font-size:clamp(13px,3.3vw,15px)}
 
     /* FAQ with toggle icon */
     .faq{max-width:720px;margin:22px auto;padding:12px;background:#0d0d0d;border-radius:12px;color:var(--accent);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
     .faq-item{background:#151515;margin-bottom:10px;border-radius:10px;overflow:hidden;transition:all .32s}
-    .faq-question{
-      padding:12px 16px;cursor:pointer;font-weight:800;position:relative;background:transparent;color:#f0c975;display:flex;align-items:center;justify-content:space-between;gap:12px;
-    }
+    .faq-question{ padding:12px 16px;cursor:pointer;font-weight:800;position:relative;background:transparent;color:#f0c975; display:flex;align-items:center;justify-content:space-between;gap:12px;}
     .faq-title{flex:1;text-align:left}
-    .toggle-icon{
-      flex:0 0 auto;
-      width:36px;height:36px;border-radius:50%;background:var(--accent);color:#000;font-weight:800;display:inline-flex;
-      align-items:center;justify-content:center;font-size:18px;transition:transform .22s,background .2s;
-    }
+    .toggle-icon{ flex:0 0 auto; width:36px;height:36px;border-radius:50%;background:var(--accent);color:#000;font-weight:800;display:inline-flex; align-items:center;justify-content:center;font-size:18px;transition:transform .22s,background .2s;}
     .faq-item.active .toggle-icon{transform:rotate(180deg);background:#f1c26b}
     .faq-answer{max-height:0;overflow:hidden;background:#0b0b0b;padding:0 16px;color:#e0d4b0;transition:all .32s}
     .faq-item.active .faq-answer{padding:12px 16px;max-height:400px}
@@ -117,15 +194,12 @@
     .close-x{position:absolute;right:10px;top:8px;background:transparent;border:none;color:#fff;font-size:18px;cursor:pointer}
 
     @media(max-width:520px){
-      /* On phones show 2 columns (2 up, 2 down) */
-      .steps{grid-template-columns:repeat(2,1fr);gap:10px}
       .container{padding:12px}
       h1{font-size:20px}
-      .feature-box{padding:10px}
-      .faq{padding:10px}
-      .toggle-icon{width:32px;height:32px;font-size:16px}
+      .feature-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+      .feature-media{width:58px;height:58px;min-width:58px}
+      .feature-card{min-height:88px;padding:10px}
       .video-aspect{max-height:45vh}
-      .counter-card .value{font-size:18px}
       .modal{padding:14px}
       .modal .form-row{flex-direction:column}
     }
@@ -178,19 +252,50 @@
       </div>
     </section>
 
-    <!-- FEATURES -->
-    <section class="feature-section" aria-label="Features">
-      <h2 style="text-align:center;color:var(--accent);margin-top:0">🌱 Aap Yahan Seekhenge</h2>
-      <p style="text-align:center;color:var(--muted);margin-top:0">Real, skill-based aur sustainable online income opportunity</p>
-      <div class="features" role="list">
-        <div class="feature-box" role="listitem"><div class="feature-icon">✨</div><div style="font-weight:800;color:var(--accent)">Digital Skills</div><div style="color:#cfcfcf;font-size:13px">Market skills in demand</div></div>
-        <div class="feature-box" role="listitem"><div class="feature-icon">📞</div><div style="font-weight:800;color:var(--accent)">Phone Se Kaam</div><div style="color:#cfcfcf;font-size:13px">Work via phone</div></div>
-        <div class="feature-box" role="listitem"><div class="feature-icon">⏰</div><div style="font-weight:800;color:var(--accent)">Flexible Timing</div><div style="color:#cfcfcf;font-size:13px">Work on your schedule</div></div>
-        <div class="feature-box" role="listitem"><div class="feature-icon">🎯</div><div style="font-weight:800;color:var(--accent)">Online Identity</div><div style="color:#cfcfcf;font-size:13px">Build your presence</div></div>
+    <!-- =================== FEATURES (new layout like your image) =================== -->
+    <section class="feature-wrapper" aria-label="What you will learn">
+      <div class="feature-header">
+        <h2>🌱 Aap Yahan Seekhenge</h2>
+        <p>Real, skill-based aur sustainable online income opportunity</p>
+      </div>
+
+      <div class="feature-grid" role="list">
+        <div class="feature-card" role="listitem">
+          <div class="feature-media">✨</div>
+          <div class="feature-content">
+            <div class="feature-title">Digital Skills</div>
+            <div class="feature-desc">Market skills in demand</div>
+          </div>
+        </div>
+
+        <div class="feature-card" role="listitem">
+          <div class="feature-media">📞</div>
+          <div class="feature-content">
+            <div class="feature-title">Phone Se Kaam</div>
+            <div class="feature-desc">Work via phone</div>
+          </div>
+        </div>
+
+        <div class="feature-card" role="listitem">
+          <div class="feature-media">⏰</div>
+          <div class="feature-content">
+            <div class="feature-title">Flexible Timing</div>
+            <div class="feature-desc">Work on your schedule</div>
+          </div>
+        </div>
+
+        <div class="feature-card" role="listitem">
+          <div class="feature-media">🎯</div>
+          <div class="feature-content">
+            <div class="feature-title">Online Identity</div>
+            <div class="feature-desc">Build your presence</div>
+          </div>
+        </div>
       </div>
     </section>
+    <!-- =================== end features =================== -->
 
-    <!-- STEPS (2x2 on phone) -->
+    <!-- STEPS -->
     <section style="padding:16px 0;color:var(--accent)">
       <h2 style="text-align:center;margin-top:0;font-size:20px">✨ What Happens When You Join?</h2>
       <div class="steps" id="stepsList">
@@ -259,7 +364,7 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal (unchanged) -->
   <div id="leadModal" class="modal-backdrop" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
       <button class="close-x" id="modalClose" aria-label="Close">&times;</button>
@@ -302,14 +407,12 @@
 
   <script>
     (function(){
-      // ---------- CONFIG ----------
+      // CONFIG
       const WA_NUMBER = "919289142724"; // +91 9289142724
       const DEST_NAME = "Farzeen Mam";
 
-      // --- Google Apps Script Web App URL ---
-      // Deploy Apps Script (instructions below) and paste the web app URL here.
-      // If left empty, Sheets POST will be skipped.
-      const GAS_URL = ""; // <-- PASTE YOUR DEPLOYED GAS WEB APP URL HERE (example: https://script.google.com/macros/s/AKfy.../exec)
+      // Optional Google Apps Script Web App URL (leave empty to skip Sheets)
+      const GAS_URL = ""; // paste your Apps Script web app URL here if you want leads to go to Google Sheets
 
       // Elements
       const openBtns = document.querySelectorAll('.open-whatsapp-form');
@@ -360,7 +463,7 @@
       modalCancel.addEventListener('click', hideModal);
       modal.addEventListener('click', function(e){ if(e.target === modal) hideModal(); });
 
-      // SUBMIT: validate -> Pixel -> (optional) POST to Google Sheets -> Open WhatsApp
+      // Submit handler: validate -> pixel -> optional GAS POST -> open whatsapp
       leadForm.addEventListener('submit', async function(e){
         e.preventDefault();
         const name = (document.getElementById('lead_name').value || '').trim();
@@ -400,49 +503,32 @@
         if(src) msgLines.push(`Source: ${src}`);
         const message = encodeURIComponent(msgLines.join('\n'));
 
-        // Optional: POST to Google Sheets via Apps Script
+        // Optional: POST to Google Sheets (Apps Script)
         if(GAS_URL && GAS_URL.trim().length > 8){
           try {
-            // payload as JSON
-            const payload = {
-              name: name,
-              phone: phone,
-              age: age,
-              profession: prof,
-              source: src || 'landing',
-              timestamp: new Date().toISOString()
-            };
-            // send POST
+            const payload = { name, phone, age, profession: prof, source: src || 'landing', timestamp: new Date().toISOString() };
             fetch(GAS_URL, {
               method: 'POST',
               mode: 'cors',
               cache: 'no-cache',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload)
-            }).then(res => {
-              // we don't block whatsapp opening — fire & forget
-              // optionally you can check res.ok and retry/log errors
-            }).catch(err => {
-              console.warn('GAS POST failed', err);
-            });
+            }).catch(err => console.warn('GAS POST failed', err));
           } catch(err){}
         }
 
-        // Open WhatsApp
         const waUrl = `https://wa.me/${WA_NUMBER}?text=${message}`;
         window.open(waUrl, '_blank');
 
-        // reset & close
         leadForm.reset();
         hideModal();
       });
 
-      // ESC to close
       document.addEventListener('keydown', function(e){
         if(e.key === 'Escape' && modal.style.display === 'flex') hideModal();
       });
 
-      // Counters
+      // Counters animate when visible
       const counters = document.querySelectorAll('.counter');
       counters.forEach(counter => counter.textContent = counter.textContent.replace(/\d/g,'0'));
       if('IntersectionObserver' in window){
