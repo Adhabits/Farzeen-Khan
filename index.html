@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Farzeen Khan — Empowering Females</title>
 
-  <!-- Meta Pixel (kept) -->
+  <!-- Meta Pixel -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,7 +15,7 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window,document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1294526649348599'); // Pixel ID
+  fbq('init', '1294526649348599'); // Pixel ID (kept)
   fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
@@ -35,7 +35,7 @@
     a{color:inherit}
     .container{max-width:1000px;margin:0 auto;padding:18px}
 
-    /* ===== Buttons & animation ===== */
+    /* Buttons & animation */
     .watch-wrap{text-align:center;margin-top:12px}
     .watch-btn{
       display:inline-block;padding:10px 22px;background:var(--accent);color:#000;font-weight:800;border-radius:30px;
@@ -46,27 +46,26 @@
     .pulse-shake{ animation:shakeX 1.6s infinite; }
     @keyframes shakeX {0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
 
-    /* ===== Coach ===== */
+    /* Coach */
     .coach{padding:26px 12px;text-align:center}
     .badge{background:var(--accent);color:#000;padding:8px 14px;border-radius:25px;display:inline-block;margin-bottom:10px;animation:popIn .6s}
     @keyframes popIn{0{transform:scale(.9);opacity:0}100{transform:scale(1);opacity:1}}
     h1{font-size:26px;margin:10px 0 8px;filter:drop-shadow(0 6px 18px rgba(255,182,66,0.12))}
     .vision{background:linear-gradient(180deg,var(--card),#0b0b0b);padding:12px;border-radius:10px;margin:12px auto;max-width:900px;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
 
-    /* ===== Responsive embedded video ===== */
+    /* Responsive video */
     .video-wrap{width:100%;max-width:880px;margin:14px auto;border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,0.6)}
     .video-wrap iframe{width:100%;height:100%;border:0;display:block}
-    /* set a responsive aspect ratio that will keep height reasonable on phones */
-    .video-aspect { aspect-ratio: 16 / 9; max-height: 55vh; } /* caps height on small screens */
+    .video-aspect { aspect-ratio: 16/9; max-height:55vh; }
 
-    /* ===== Counters (responsive tweak) ===== */
+    /* Counters */
     .counters{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:16px 0}
     .counter-card{background:linear-gradient(145deg,#151515,#0e0e0e);border-radius:10px;padding:14px 16px;min-width:110px;box-shadow:0 10px 30px rgba(0,0,0,0.6);transition:transform .28s}
     .counter-card:hover{transform:translateY(-6px)}
     .counter-card .value{font-size:20px;font-weight:800;color:var(--accent)}
     .counter-card .label{font-size:12px;color:var(--muted)}
 
-    /* ===== Features ===== */
+    /* Features */
     .feature-section{background:linear-gradient(145deg,#0e0e0e,#000);padding:16px;border-radius:12px;margin:12px 0}
     .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
     .feature-box{background:linear-gradient(145deg,var(--card),#0f0f0f);padding:12px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.6);transition:transform .28s;cursor:pointer;text-align:center}
@@ -74,30 +73,25 @@
     .feature-icon{font-size:20px;background:radial-gradient(circle,var(--accent),#c27803);color:#000;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px;transition:transform .4s}
     .feature-box:hover .feature-icon{transform:rotate(16deg) scale(1.08)}
 
-    /* ===== Steps / numbered circles responsive ===== */
-    .steps{max-width:760px;margin:12px auto;display:grid;gap:12px}
+    /* Steps — default single column on desktop, mobile will be 2 columns */
+    .steps{max-width:760px;margin:12px auto;display:grid;gap:12px;grid-template-columns:1fr}
     .card{background:linear-gradient(145deg,#121212,#0b0b0b);padding:14px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,0.6);display:flex;gap:12px;align-items:flex-start;opacity:0;transform:translateX(16px);transition:all .5s}
     .card.visible{opacity:1;transform:none}
-    /* step-circle responsive sizing - smaller on phone */
     .step-circle{
       background:var(--accent);color:#000;border-radius:50%;
       width:clamp(36px, 9vw, 48px);height:clamp(36px,9vw,48px);
       display:flex;align-items:center;justify-content:center;font-weight:800;font-size:clamp(14px,3.6vw,18px)
     }
-
-    /* text sizes responsive */
     .card h3{margin:0;font-size:clamp(15px,3.6vw,18px)}
     .card p{margin:6px 0 0;color:#cfcfcf;font-size:clamp(13px,3.3vw,15px)}
 
-    /* ===== FAQ with toggle icon ===== */
+    /* FAQ with toggle icon */
     .faq{max-width:720px;margin:22px auto;padding:12px;background:#0d0d0d;border-radius:12px;color:var(--accent);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
     .faq-item{background:#151515;margin-bottom:10px;border-radius:10px;overflow:hidden;transition:all .32s}
     .faq-question{
-      padding:12px 16px;cursor:pointer;font-weight:800;position:relative;background:transparent;color:#f0c975;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 16px;cursor:pointer;font-weight:800;position:relative;background:transparent;color:#f0c975;display:flex;align-items:center;justify-content:space-between;gap:12px;
     }
     .faq-title{flex:1;text-align:left}
-    /* toggle icon: round yellow with + ; changes to - when active */
     .toggle-icon{
       flex:0 0 auto;
       width:36px;height:36px;border-radius:50%;background:var(--accent);color:#000;font-weight:800;display:inline-flex;
@@ -107,7 +101,7 @@
     .faq-answer{max-height:0;overflow:hidden;background:#0b0b0b;padding:0 16px;color:#e0d4b0;transition:all .32s}
     .faq-item.active .faq-answer{padding:12px 16px;max-height:400px}
 
-    /* ===== Modal (cleaner) ===== */
+    /* Modal */
     .modal-backdrop{position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:9999;padding:12px}
     .modal{background:linear-gradient(180deg,#0f0f0f,#0a0a0a);border-radius:12px;padding:16px;max-width:460px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,0.7);color:#fff;border:1px solid rgba(255,182,66,0.06);position:relative;transform:translateY(20px) scale(.98);opacity:0;transition:all .28s}
     .modal.show{transform:translateY(0) scale(1);opacity:1}
@@ -122,12 +116,12 @@
     .btn-primary{background:var(--whatsapp);color:#000;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;font-weight:800}
     .close-x{position:absolute;right:10px;top:8px;background:transparent;border:none;color:#fff;font-size:18px;cursor:pointer}
 
-    /* mobile specific reductions */
     @media(max-width:520px){
+      /* On phones show 2 columns (2 up, 2 down) */
+      .steps{grid-template-columns:repeat(2,1fr);gap:10px}
       .container{padding:12px}
       h1{font-size:20px}
       .feature-box{padding:10px}
-      .card{padding:12px;gap:10px}
       .faq{padding:10px}
       .toggle-icon{width:32px;height:32px;font-size:16px}
       .video-aspect{max-height:45vh}
@@ -196,7 +190,7 @@
       </div>
     </section>
 
-    <!-- STEPS (numbered circles responsive) -->
+    <!-- STEPS (2x2 on phone) -->
     <section style="padding:16px 0;color:var(--accent)">
       <h2 style="text-align:center;margin-top:0;font-size:20px">✨ What Happens When You Join?</h2>
       <div class="steps" id="stepsList">
@@ -211,7 +205,7 @@
       </div>
     </section>
 
-    <!-- FAQ with toggle icons -->
+    <!-- FAQ -->
     <section class="faq" aria-label="FAQ">
       <h2 style="text-align:center;margin-top:0;font-size:20px">Frequently Asked Questions</h2>
       <p style="text-align:center;color:var(--muted);margin-top:6px">Tap the + to open the answer</p>
@@ -308,9 +302,14 @@
 
   <script>
     (function(){
-      // CONFIG
+      // ---------- CONFIG ----------
       const WA_NUMBER = "919289142724"; // +91 9289142724
       const DEST_NAME = "Farzeen Mam";
+
+      // --- Google Apps Script Web App URL ---
+      // Deploy Apps Script (instructions below) and paste the web app URL here.
+      // If left empty, Sheets POST will be skipped.
+      const GAS_URL = ""; // <-- PASTE YOUR DEPLOYED GAS WEB APP URL HERE (example: https://script.google.com/macros/s/AKfy.../exec)
 
       // Elements
       const openBtns = document.querySelectorAll('.open-whatsapp-form');
@@ -320,7 +319,6 @@
       const leadForm = document.getElementById('leadForm');
       const leadSource = document.getElementById('lead_source');
 
-      // Show modal
       function showModal(source='') {
         leadSource.value = source;
         modal.style.display = 'flex';
@@ -330,8 +328,6 @@
         document.body.style.overflow = 'hidden';
         setTimeout(()=> document.getElementById('lead_name').focus(), 120);
       }
-
-      // Hide modal
       function hideModal() {
         const dialog = modal.querySelector('.modal');
         dialog.classList.remove('show');
@@ -342,7 +338,6 @@
         }, 220);
       }
 
-      // Open modal on CTA clicks
       openBtns.forEach(btn => {
         btn.addEventListener('click', function(e){
           e.preventDefault();
@@ -351,7 +346,7 @@
         });
       });
 
-      // Intercept direct wa.me anchors to show modal instead
+      // Intercept wa.me anchors
       document.addEventListener('click', function(e){
         const a = e.target.closest('a');
         if(a && a.href && a.href.includes('wa.me')){
@@ -363,14 +358,10 @@
 
       modalClose.addEventListener('click', hideModal);
       modalCancel.addEventListener('click', hideModal);
+      modal.addEventListener('click', function(e){ if(e.target === modal) hideModal(); });
 
-      // click outside modal to close
-      modal.addEventListener('click', function(e){
-        if(e.target === modal) hideModal();
-      });
-
-      // Submit handler: validate -> pixel lead -> open whatsapp with EXACT format requested
-      leadForm.addEventListener('submit', function(e){
+      // SUBMIT: validate -> Pixel -> (optional) POST to Google Sheets -> Open WhatsApp
+      leadForm.addEventListener('submit', async function(e){
         e.preventDefault();
         const name = (document.getElementById('lead_name').value || '').trim();
         const phoneRaw = (document.getElementById('lead_phone').value || '').trim();
@@ -397,7 +388,7 @@
           }
         } catch(err){ /* ignore */ }
 
-        // Compose message exactly as you requested
+        // Compose message EXACT format
         let msgLines = [];
         msgLines.push(`Hello ${DEST_NAME} ,I am interested in this work`);
         msgLines.push(`this is my detels`);
@@ -407,12 +398,41 @@
         msgLines.push(`Age: ${age}.`);
         msgLines.push(`Please share me work details.`);
         if(src) msgLines.push(`Source: ${src}`);
-
         const message = encodeURIComponent(msgLines.join('\n'));
+
+        // Optional: POST to Google Sheets via Apps Script
+        if(GAS_URL && GAS_URL.trim().length > 8){
+          try {
+            // payload as JSON
+            const payload = {
+              name: name,
+              phone: phone,
+              age: age,
+              profession: prof,
+              source: src || 'landing',
+              timestamp: new Date().toISOString()
+            };
+            // send POST
+            fetch(GAS_URL, {
+              method: 'POST',
+              mode: 'cors',
+              cache: 'no-cache',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            }).then(res => {
+              // we don't block whatsapp opening — fire & forget
+              // optionally you can check res.ok and retry/log errors
+            }).catch(err => {
+              console.warn('GAS POST failed', err);
+            });
+          } catch(err){}
+        }
+
+        // Open WhatsApp
         const waUrl = `https://wa.me/${WA_NUMBER}?text=${message}`;
         window.open(waUrl, '_blank');
 
-        // Reset & close
+        // reset & close
         leadForm.reset();
         hideModal();
       });
@@ -422,7 +442,7 @@
         if(e.key === 'Escape' && modal.style.display === 'flex') hideModal();
       });
 
-      // Counters: animate when visible
+      // Counters
       const counters = document.querySelectorAll('.counter');
       counters.forEach(counter => counter.textContent = counter.textContent.replace(/\d/g,'0'));
       if('IntersectionObserver' in window){
@@ -455,7 +475,7 @@
         });
       }
 
-      // Steps reveal animation
+      // Steps reveal
       const stepCards = document.querySelectorAll('.card');
       const stepObs = new IntersectionObserver(entries=>{
         entries.forEach(entry=>{
@@ -464,15 +484,13 @@
       }, {threshold:0.18});
       stepCards.forEach(c=> stepObs.observe(c));
 
-      // FAQ toggles (plus/minus)
+      // FAQ toggles
       document.querySelectorAll('.faq-item').forEach(item=>{
         const q = item.querySelector('.faq-question');
         const icon = item.querySelector('.toggle-icon');
         q && q.addEventListener('click', ()=>{
           const isActive = item.classList.toggle('active');
-          // change icon text from + to - for accessibility
-          if(isActive) icon.textContent = '−';
-          else icon.textContent = '+';
+          icon.textContent = isActive ? '−' : '+';
         });
       });
 
