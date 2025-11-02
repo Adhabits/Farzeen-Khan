@@ -282,7 +282,9 @@
       cards.forEach(card=>cardObs.observe(card));
     });
 
-    // WhatsApp submit
+    // WhatsApp submit + POST to Google Sheet
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz6XqOuP6w9E_H6GgWNU53-FmRFtYCjU2y9zWqbQXBvhEDOSDUvT5gZqi-tZBW-vrY/exec";
+
     function sendToWhatsApp(){
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
@@ -295,7 +297,25 @@
         fbq('track','Lead',{content_name:'WhatsApp Form',name:name,phone:phone,age:age,profession:profession});
       }
 
-      // Prepare message and open WhatsApp chat to your number
+      const payload = { name, phone, age, profession, source: 'LandingPageForm' };
+
+      // Send to Google Sheet first, then open WhatsApp
+      fetch(WEB_APP_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json().catch(()=>{}))
+      .then(() => {
+        openWhatsApp(name, phone, age, profession);
+      })
+      .catch(()=>{
+        // even if saving fails, still open WhatsApp
+        openWhatsApp(name, phone, age, profession);
+      });
+    }
+
+    function openWhatsApp(name, phone, age, profession){
       const adminNumber = '9289142724'; // Farzeen's number
       const cleanedPhone = phone.replace(/[^0-9+]/g,'');
       const message = `Hello Farzeen Khan Mam ,%0A%0AMy name is ${encodeURIComponent(name)}.%0APhone: ${encodeURIComponent(cleanedPhone)}.%0AProfession: ${encodeURIComponent(profession)}.%0AAge: ${encodeURIComponent(age)}.%0AI am interested in this work. Please share me work details.%0A#source:LandingPageForm`;
