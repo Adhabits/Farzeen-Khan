@@ -281,45 +281,46 @@
       const cardObs = new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); cardObs.unobserve(entry.target); } }); },{threshold:0.3});
       cards.forEach(card=>cardObs.observe(card));
     });
-<script>
-  // --- FINAL: your deployed Web App URL (no trailing dot) ---
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby9QyLW3kYtpVDzu-m2C13hNcgxFRmg72yd3eQK6uaQbnQmkLVfvzociDUQS7rNY7zPng/exec";
 
-  function sendToWhatsApp() {
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const age = document.getElementById('age').value.trim();
-    const profession = document.getElementById('profession').value.trim();
+    // WhatsApp submit + POST to Google Sheet
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz6XqOuP6w9E_H6GgWNU53-FmRFtYCjU2y9zWqbQXBvhEDOSDUvT5gZqi-tZBW-vrY/exec";
 
-    if (!name || !phone || !age || !profession) {
-      alert('Please fill all fields.');
-      return;
+    function sendToWhatsApp(){
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const age = document.getElementById('age').value.trim();
+      const profession = document.getElementById('profession').value.trim();
+      if(!name||!phone||!age||!profession){ alert('Please fill all fields.'); return; }
+
+      // Pixel Lead (if present)
+      if(typeof fbq === 'function'){
+        fbq('track','Lead',{content_name:'WhatsApp Form',name:name,phone:phone,age:age,profession:profession});
+      }
+
+      const payload = { name, phone, age, profession, source: 'LandingPageForm' };
+
+      // Send to Google Sheet first, then open WhatsApp
+      fetch(WEB_APP_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json().catch(()=>{}))
+      .then(() => {
+        openWhatsApp(name, phone, age, profession);
+      })
+      .catch(()=>{
+        // even if saving fails, still open WhatsApp
+        openWhatsApp(name, phone, age, profession);
+      });
     }
 
-    const payload = { name, phone, age, profession, source: 'LandingPageForm' };
-
-    // 1) send to Google Sheet (web app)
-    fetch(WEB_APP_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      mode: 'cors'
-    })
-    .then(response => response.json().catch(()=>({})))
-    .then(data => {
-      console.log('Sheet response:', data);
-    })
-    .catch(err => {
-      console.error('Sheet error:', err);
-    })
-    .finally(() => {
-      // 2) open WhatsApp chat (always do this so user flow doesn't break)
-      const adminNumber = '9289142724';
-      const message = `Hello Farzeen Khan Mam,%0A%0AMy name is ${encodeURIComponent(name)}.%0APhone: ${encodeURIComponent(phone)}.%0AAge: ${encodeURIComponent(age)}.%0AProfession: ${encodeURIComponent(profession)}.%0A`;
-      window.open(`https://wa.me/91${adminNumber}?text=${message}`, '_blank');
-    });
-  }
-</script>
-
+    function openWhatsApp(name, phone, age, profession){
+      const adminNumber = '9289142724'; // Farzeen's number
+      const cleanedPhone = phone.replace(/[^0-9+]/g,'');
+      const message = `Hello Farzeen Khan Mam ,%0A%0AMy name is ${encodeURIComponent(name)}.%0APhone: ${encodeURIComponent(cleanedPhone)}.%0AProfession: ${encodeURIComponent(profession)}.%0AAge: ${encodeURIComponent(age)}.%0AI am interested in this work. Please share me work details.%0A#source:LandingPageForm`;
+      window.open(`https://wa.me/91${adminNumber}?text=${message}`,'_blank');
+    }
+  </script>
 </body>
 </html>
