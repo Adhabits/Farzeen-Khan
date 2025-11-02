@@ -103,9 +103,9 @@
   <div class="watch-wrap">
     <div class="watch-cta">👇 Only For Girls 👇</div>
     <div style="margin-top:14px;">
-      <a href="https://ibb.co/kVxnZf1y" target="_blank">
-        <!-- image size slightly smaller (max-width 420px) -->
-        <img src="https://i.ibb.co/ZRVs9PmJ/farzeen-mam.jpg" alt="Farzeen Khan" style="width:100%;max-width:420px;height:auto;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.6);margin-top:12px;" />
+      <!-- updated image (smaller max-width for mobile-friendly layout) -->
+      <a href="https://i.ibb.co/tpvbjn83/farzeen-mam-langing-page-pic.jpg" target="_blank" rel="noopener">
+        <img src="https://i.ibb.co/tpvbjn83/farzeen-mam-langing-page-pic.jpg" alt="Farzeen Khan" style="width:100%;max-width:420px;height:auto;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.6);margin-top:12px;" />
       </a>
     </div>
     <div style="font-size:15px;color:#ffb642;margin-top:10px;font-weight:700;">📞 Contact No: 9289142724</div>
@@ -303,7 +303,8 @@
       fetch(WEB_APP_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        mode: 'cors'
       })
       .then(res => res.json().catch(()=>{}))
       .then(() => {
